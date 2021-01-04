@@ -1,0 +1,8 @@
+fr\skyfighttv\autologger\Listeners\BlockPlace.class
+fr\skyfighttv\autologger\Listeners\PlayerDeath.class
+fr\skyfighttv\autologger\Listeners\BlockBreak.class
+fr\skyfighttv\autologger\Listeners\PlayerDropItem.class
+fr\skyfighttv\autologger\Utils\FileManager.class
+fr\skyfighttv\autologger\Listeners\PlayerTeleport.class
+fr\skyfighttv\autologger\Main.class
+fr\skyfighttv\autologger\Listeners\PlayerPickupItem.class

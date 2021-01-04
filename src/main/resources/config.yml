@@ -1,0 +1,221 @@
+FolderPath: "log"
+Modules:
+  BlockBreak: true
+  BlockPlace: true
+  PlayerBedEnter: true
+  PlayerBedLeave: true
+  PlayerBucketEmpty: true
+  PlayerBucket: true
+  PlayerBucketFill: true
+  PlayerChangedMainHand: true
+  PlayerChangedWorld: true
+  PlayerChat: true
+  PlayerChatTabComplete: true
+  PlayerCommandPreprocess: true
+  PlayerCommandSend: true
+  PlayerDeath: true
+  PlayerDropItem: true
+  PlayerEditBook: true
+  PlayerEggThrow: true
+  PlayerExpChange: true
+  PlayerFish: true
+  PlayerGameModeChange: true
+  PlayerInteractAtEntity: true
+  PlayerInteract: true
+  PlayerItemBreak: true
+  PlayerItemConsume: true
+  PlayerItemDamage: true
+  PlayerItemHeld: true
+  PlayerItemMend: true
+  PlayerJoin: true
+  PlayerKick: true
+  PlayerLevelChange: true
+  PlayerLogin: true
+  PlayerMove: true
+  PlayerPickupArrow: true
+  PlayerPickupItem: true
+  PlayerPortal: true
+  PlayerQuit: true
+  PlayerRespawn: true
+  PlayerSwapHandItems: true
+  PlayerTeleport: true
+  PlayerToggleFlight: true
+  PlayerToggleSneak: true
+  PlayerToggleSprint: true
+
+#Informations:
+#FolderName = name of the folder where all files of this event are created
+#FileName = name of the file created inside folder
+#Message = text written in the file each time the event is called
+
+#GlobalVariables:
+#%date% = hh:mm:ss
+#%playername% = name of the player
+#%worldname% = name of the world where the event took place
+
+#Variables:
+#%blockname% = name of the broken block
+#%x% = x-coordinate of the broken block
+#%y% = y-coordinate of the broken block
+#%z% = z-coordinate of the broken block
+#%itemname% = name of the item use to broke the block
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message:  "[%date%] %playername% : %blockname% in %worldname% at %x% %y% %z% with %itemname%"
+
+#Variables:
+#%blockname% = name of the placed block
+#%x% = x-coordinate of the placed block
+#%y% = y-coordinate of the placed block
+#%z% = z-coordinate of the placed block
+BlockPlace:
+  FolderName: "AutoLogger_BlockPlace"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : %blockname% in %worldname% at %x% %y% %z%"
+
+#Variables:
+#%BedEnterResult% = result of the event
+#%x% = x-coordinate of the bed
+#%y% = y-coordinate of the bed
+#%z% = z-coordinate of the bed
+PlayerBedEnter:
+  FolderName: "AutoLogger_PlayerBedEnter"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : (%BedEnterResult%) in %worldname% at %x% %y% %z%"
+
+#Variables:
+#%x% = x-coordinate of the bed
+#%y% = y-coordinate of the bed
+#%z% = z-coordinate of the bed
+PlayerBedLeave:
+  FolderName: "AutoLogger_PlayerBedLeave"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : %worldname% at %x% %y% %z%"
+
+#Variables:
+#%bucket% = name of the bucket
+#%x% = x-coordinate of the clicked block
+#%y% = y-coordinate of the clicked block
+#%z% = z-coordinate of the clicked block
+PlayerBucketEmpty:
+  FolderName: "AutoLogger_PlayerBucketEmpty"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : %bucket% in %worldname% at %x% %y% %z%"
+
+#Variables:
+#%bucket% = name of the bucket
+#%x% = x-coordinate of the clicked block
+#%y% = y-coordinate of the clicked block
+#%z% = z-coordinate of the clicked block
+PlayerBucketFill:
+  FolderName: "AutoLogger_PlayerBucketFill"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : %bucket% in %worldname% at %x% %y% %z%"
+
+#Variable:
+#%from% = name of the world from the player
+PlayerChangedWorld:
+  FolderName: "AutoLogger_PlayerChangedWorld"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : %from% -> %worldname%"
+
+#Variable:
+#%message% = message send by the player
+PlayerChat:
+  FolderName: "AutoLogger_PlayerChat"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : %message%"
+
+#Variable:
+#%message% = message being tab-completed
+PlayerChatTabComplete:
+  FolderName: "AutoLogger_PlayerChatTabComplete"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : %message%"
+
+#Variable:
+#%command% = command send by the player
+PlayerCommandPreprocess:
+  FolderName: "AutoLogger_PlayerCommandPreprocess"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : %command%"
+
+#Variables:
+#%stuff% = dead player stuff
+#%x% = dead player's x coordinates
+#%y% = dead player's y coordinates
+#%z% = dead player's z coordinates
+#%message% = death message
+PlayerDeath:
+  FolderName: "AutoLogger_PlayerDeath"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : %stuff%"
+
+#Variables:
+#%amount% = number of items dropped
+#%item% = name of the dropped items
+#%x% = x-coordinate of the dropped items
+#%y% = y-coordinate of the dropped items
+#%z% = z-coordinate of the dropped items
+PlayerDropItem:
+  FolderName: "AutoLogger_PlayerDropItem"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : %amount%x %item% in %worldname% at %x% %y% %z%"
+
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message: "%DATE%"
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message: "%DATE%"
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message: "%DATE%"
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message: "%DATE%"
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message: "%DATE%"
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message: "%DATE%"
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message: "%DATE%"
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message: "%DATE%"
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message: "%DATE%"
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message: "%DATE%"
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message: "%DATE%"
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message: "%DATE%"
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message: "%DATE%"
+BlockBreak:
+  FolderName: "AutoLogger_BlockBreak"
+  FileName: "%date%-%filenumber%"
+  Message: "%DATE%"
