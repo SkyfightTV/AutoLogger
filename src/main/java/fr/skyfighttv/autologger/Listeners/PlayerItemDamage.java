@@ -24,5 +24,8 @@ public class PlayerItemDamage implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerItemDamage"), text);
 
         Main.sendDebug("PlayerItemDamage event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerItemDamage"))
+            Main.getInstance().webhookClients.get("PlayerItemDamage").send(text);
     }
 }

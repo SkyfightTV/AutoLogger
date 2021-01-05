@@ -22,5 +22,8 @@ public class PlayerPickupArrow implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerPickupArrow"), text);
 
         Main.sendDebug("PlayerPickupArrow event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerPickupArrow"))
+            Main.getInstance().webhookClients.get("PlayerPickupArrow").send(text);
     }
 }

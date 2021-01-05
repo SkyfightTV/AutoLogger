@@ -27,5 +27,8 @@ public class EntityTarget implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("EntityTarget"), text);
 
         Main.sendDebug("EntityTarget event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("EntityTarget"))
+            Main.getInstance().webhookClients.get("EntityTarget").send(text);
     }
 }

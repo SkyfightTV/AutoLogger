@@ -22,5 +22,8 @@ public class PlayerBedLeave implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerBedLeave"), text);
 
         Main.sendDebug("PlayerBedLeave event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerBedLeave"))
+            Main.getInstance().webhookClients.get("PlayerBedLeave").send(text);
     }
 }

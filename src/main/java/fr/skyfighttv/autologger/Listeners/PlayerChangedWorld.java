@@ -20,5 +20,8 @@ public class PlayerChangedWorld implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerChangedWorld"), text);
 
         Main.sendDebug("PlayerChangedWorld event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerChangedWorld"))
+            Main.getInstance().webhookClients.get("PlayerChangedWorld").send(text);
     }
 }

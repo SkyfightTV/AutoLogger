@@ -23,5 +23,8 @@ public class PlayerItemConsume implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerItemConsume"), text);
 
         Main.sendDebug("PlayerItemConsume event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerItemConsume"))
+            Main.getInstance().webhookClients.get("PlayerItemConsume").send(text);
     }
 }

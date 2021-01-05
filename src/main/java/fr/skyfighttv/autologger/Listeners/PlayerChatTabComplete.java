@@ -20,5 +20,8 @@ public class PlayerChatTabComplete implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerChatTabComplete"), text);
 
         Main.sendDebug("PlayerChatTabComplete event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerChatTabComplete"))
+            Main.getInstance().webhookClients.get("PlayerChatTabComplete").send(text);
     }
 }

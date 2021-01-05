@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 
 public class BlockBreak implements Listener {
     @EventHandler
-    private void onBreak(BlockBreakEvent event) {
+    private void onBlockBreak(BlockBreakEvent event) {
         String text = FileManager.getValues().get("config").getString("BlockBreak.Message")
                 .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
@@ -24,5 +24,8 @@ public class BlockBreak implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("BlockBreak"), text);
 
         Main.sendDebug("BlockBreak event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("BlockBreak"))
+            Main.getInstance().webhookClients.get("BlockBreak").send(text);
     }
 }

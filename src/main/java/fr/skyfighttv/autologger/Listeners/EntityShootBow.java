@@ -24,5 +24,8 @@ public class EntityShootBow implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("EntityShootBow"), text);
 
         Main.sendDebug("EntityShootBow event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("EntityShootBow"))
+            Main.getInstance().webhookClients.get("EntityShootBow").send(text);
     }
 }

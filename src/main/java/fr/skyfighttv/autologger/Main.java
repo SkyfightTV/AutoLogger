@@ -1,5 +1,6 @@
 package fr.skyfighttv.autologger;
 
+import club.minnced.discord.webhook.WebhookClient;
 import fr.skyfighttv.autologger.Listeners.*;
 import fr.skyfighttv.autologger.Utils.FileManager;
 import org.bukkit.event.HandlerList;
@@ -15,6 +16,7 @@ public class Main extends JavaPlugin {
     private static Main Instance;
     public Integer fileNumber = 0;
     public HashMap<String, File> folders = new HashMap<>();
+    public HashMap<String, WebhookClient> webhookClients = new HashMap<>();
 
     public static String ANSI_RESET = "";
     public static String ANSI_BLACK = "";
@@ -26,7 +28,7 @@ public class Main extends JavaPlugin {
     public static String ANSI_CYAN = "";
     public static String ANSI_WHITE = "";
 
-    private final HashMap<String, ?> listenerList = new HashMap<>() {{
+    private final HashMap<String, Listener> listenerList = new HashMap<>() {{
         put("BlockBreak", new BlockBreak());
         put("BlockPlace", new BlockPlace());
         put("EntityDamage", new EntityDamage());
@@ -111,15 +113,27 @@ public class Main extends JavaPlugin {
 
         for (String events : getConfig().getConfigurationSection("Modules").getKeys(false)) {
             if (getConfig().getBoolean("Modules." + events)) {
-                getServer().getPluginManager().registerEvents((Listener) listenerList.get(events), this);
+                getServer().getPluginManager().registerEvents(listenerList.get(events), this);
                 System.out.println(ANSI_GREEN + events + " event registered" + ANSI_RESET);
             } else {
                 if (HandlerList.getRegisteredListeners(this).contains(listenerList.get(events))) {
-                    HandlerList.unregisterAll((Listener) listenerList.get(events));
+                    HandlerList.unregisterAll(listenerList.get(events));
                     System.out.println(ANSI_RED + events + " event unregistered" + ANSI_RESET);
                 } else {
                     System.out.println(ANSI_RED + events + " event skipped" + ANSI_RESET);
                 }
+            }
+        }
+
+        System.out.println(ANSI_CYAN + "- Initialization of Discord WebHooks : " + ANSI_RESET);
+
+        for (String events : getConfig().getConfigurationSection("Modules").getKeys(false)) {
+            if (getConfig().getString(events + ".WebHookDiscord") != null
+                    && !getConfig().getString(events + ".WebHookDiscord").isEmpty()) {
+                webhookClients.put(events, WebhookClient.withUrl(getConfig().getString(events + ".WebHookDiscord")));
+                System.out.println(ANSI_GREEN + events + " webhook was loaded" + ANSI_RESET);
+            } else {
+                System.out.println(ANSI_RED + events + " webhook was skipped" + ANSI_RESET);
             }
         }
 

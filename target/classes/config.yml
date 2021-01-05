@@ -112,6 +112,7 @@ BlockBreak:
   FolderName: "AutoLogger_BlockBreak"
   FileName: "%date%-%filenumber%"
   Message:  "[%date%] %playername% : %blockname% in %worldname% at %x% %y% %z% with %itemname%"
+  WebHookDiscord:
 
 #Variables:
 #%blockname% = name of the placed block
@@ -122,6 +123,7 @@ BlockPlace:
   FolderName: "AutoLogger_BlockPlace"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %blockname% in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%entity% = name of the entity
@@ -134,6 +136,7 @@ EntityDamage:
   FolderName: "AutoLogger_EntityDamage"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : (%cause%) %entity% get %damage% damage in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%entity% = name of the entity
@@ -144,6 +147,7 @@ EntityExplode:
   FolderName: "AutoLogger_EntityExplode"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %entity% in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%entity% = name of the entity
@@ -155,6 +159,7 @@ EntityShootBow:
   FolderName: "AutoLogger_EntityShootBow"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %entity% shoot %projectile% in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%entity% = name of the entity
@@ -165,6 +170,7 @@ EntitySpawn:
   FolderName: "AutoLogger_EntitySpawn"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %entity% in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%entity% = name of the entity
@@ -179,6 +185,7 @@ EntityTarget:
   FolderName: "AutoLogger_EntityTarget"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : (%reason%) %entity% in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%bedenterresult% = result of the event
@@ -189,6 +196,7 @@ PlayerBedEnter:
   FolderName: "AutoLogger_PlayerBedEnter"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : (%bedenterresult%) in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%x% = x-coordinate of the bed
@@ -198,6 +206,7 @@ PlayerBedLeave:
   FolderName: "AutoLogger_PlayerBedLeave"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%bucket% = name of the bucket
@@ -208,6 +217,7 @@ PlayerBucketEmpty:
   FolderName: "AutoLogger_PlayerBucketEmpty"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %bucket% in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%bucket% = name of the bucket
@@ -218,6 +228,7 @@ PlayerBucketFill:
   FolderName: "AutoLogger_PlayerBucketFill"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %bucket% in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variable:
 #%from% = name of the world from the player
@@ -225,6 +236,7 @@ PlayerChangedWorld:
   FolderName: "AutoLogger_PlayerChangedWorld"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %from% -> %worldname%"
+  WebHookDiscord:
 
 #Variable:
 #%message% = message send by the player
@@ -232,6 +244,7 @@ PlayerChat:
   FolderName: "AutoLogger_PlayerChat"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %message%"
+  WebHookDiscord:
 
 #Variable:
 #%message% = message being tab-completed
@@ -239,6 +252,7 @@ PlayerChatTabComplete:
   FolderName: "AutoLogger_PlayerChatTabComplete"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %message%"
+  WebHookDiscord:
 
 #Variable:
 #%command% = command send by the player
@@ -246,6 +260,7 @@ PlayerCommandPreprocess:
   FolderName: "AutoLogger_PlayerCommandPreprocess"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %command%"
+  WebHookDiscord:
 
 #Variables:
 #%stuff% = dead player stuff
@@ -257,6 +272,7 @@ PlayerDeath:
   FolderName: "AutoLogger_PlayerDeath"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %stuff%"
+  WebHookDiscord:
 
 #Variables:
 #%amount% = number of items dropped
@@ -268,6 +284,7 @@ PlayerDropItem:
   FolderName: "AutoLogger_PlayerDropItem"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %amount%x %item% in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%amount% = number of experiences the gambler has had
@@ -278,6 +295,7 @@ PlayerExpChange:
   FolderName: "AutoLogger_PlayerExpChange"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : get %amount% exp in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%fish% = name of the fish caught
@@ -289,6 +307,7 @@ PlayerFish:
   FolderName: "AutoLogger_PlayerFish"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %fish% and %exp% exp in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%previous% = previous gamemode
@@ -300,6 +319,7 @@ PlayerGameModeChange:
   FolderName: "AutoLogger_PlayerGameModeChange"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %previous% -> %new% in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%action% = action made by the player
@@ -312,6 +332,7 @@ PlayerInteract:
   FolderName: "AutoLogger_PlayerInteract"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : (%action%) %block% in %worldname% at %x% %y% %z% with %item%"
+  WebHookDiscord:
 
 #Variables:
 #%entity% = block clicked by the player
@@ -323,6 +344,7 @@ PlayerInteractAtEntity:
   FolderName: "AutoLogger_PlayerInteractAtEntity"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %entity% in %worldname% at %x% %y% %z% with %item%"
+  WebHookDiscord:
 
 #Variables:
 #%item% = item that broke
@@ -333,6 +355,7 @@ PlayerItemBreak:
   FolderName: "AutoLogger_PlayerItemBreak"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %item% in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%item% = item that consume
@@ -343,6 +366,7 @@ PlayerItemConsume:
   FolderName: "AutoLogger_PlayerItemConsume"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %item% in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%item% = item that consume
@@ -354,6 +378,7 @@ PlayerItemDamage:
   FolderName: "AutoLogger_PlayerItemDamage"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %item% took %damage% in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%previous% = previous item
@@ -365,6 +390,7 @@ PlayerItemHeld:
   FolderName: "AutoLogger_PlayerItemHeld"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %previous% to %new% in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%message% = message when leaving
@@ -375,6 +401,7 @@ PlayerJoin:
   FolderName: "AutoLogger_PlayerJoin"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : join in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%message% = message when kicking
@@ -385,6 +412,7 @@ PlayerKick:
   FolderName: "AutoLogger_PlayerKick"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %message% in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%old% = old exp level
@@ -396,6 +424,7 @@ PlayerLevelChange:
   FolderName: "AutoLogger_PlayerLevelChange"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : join in %worldname% at %x% %y% %z%"
+  WebHookDiscord:
 
 #Variables:
 #%fromx% = x-coordinate where the player comes from
@@ -408,7 +437,7 @@ PlayerMove:
   FolderName: "AutoLogger_PlayerMove"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %fromx% %fromy% %fromz% --> %tox% %toy% %toz% in %worldname%"
-
+  WebHookDiscord:
 
 #Variables:
 #%x% = x-coordinate of the player
@@ -418,7 +447,7 @@ PlayerPickupArrow:
   FolderName: "AutoLogger_PlayerPickupArrow"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %x% %y% %z% in %worldname%"
-
+  WebHookDiscord:
 
 #Variables:
 #%item% = name of the item picked up
@@ -430,7 +459,7 @@ PlayerPickupItem:
   FolderName: "AutoLogger_PlayerPickupItem"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %amount%x %item% in %worldname% at %x% %y% %z%"
-
+  WebHookDiscord:
 
 #Variables:
 #%fromx% = x-coordinate where the player comes from
@@ -443,7 +472,7 @@ PlayerPortal:
   FolderName: "AutoLogger_PlayerPortal"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %fromx% %fromy% %fromz% --> %tox% %toy% %toz% in %worldname%"
-
+  WebHookDiscord:
 
 #Variables:
 #%message% = message when leaving
@@ -451,7 +480,7 @@ PlayerQuit:
   FolderName: "AutoLogger_PlayerQuit"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %message% in %worldname% at %x% %y% %z%"
-
+  WebHookDiscord:
 
 #Variables:
 #%x% = coordinate x where the player respawn
@@ -461,7 +490,7 @@ PlayerRespawn:
   FolderName: "AutoLogger_PlayerRespawn"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %x% %y% %z% in %worldname%"
-
+  WebHookDiscord:
 
 #Variables:
 #%cause% = cause of teleportation
@@ -476,3 +505,4 @@ PlayerTeleport:
   FolderName: "AutoLogger_PlayerTeleport"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : (%cause%) %fromworldname% at %fromx% %fromy% %fromz% -> %worldname% at %tox% %toy% %toz%"
+  WebHookDiscord:

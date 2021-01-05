@@ -24,5 +24,8 @@ public class PlayerGameModeChange implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerGameModeChange"), text);
 
         Main.sendDebug("PlayerGameModeChange event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerGameModeChange"))
+            Main.getInstance().webhookClients.get("PlayerGameModeChange").send(text);
     }
 }

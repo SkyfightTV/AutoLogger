@@ -32,5 +32,8 @@ public class PlayerTeleport implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerTeleport"), text);
 
         Main.sendDebug("PlayerTeleport event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerTeleport"))
+            Main.getInstance().webhookClients.get("PlayerTeleport").send(text);
     }
 }

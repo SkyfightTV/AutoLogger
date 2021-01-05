@@ -23,5 +23,8 @@ public class BlockPlace implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("BlockPlace"), text);
 
         Main.sendDebug("BlockPlace event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("BlockPlace"))
+            Main.getInstance().webhookClients.get("BlockPlace").send(text);
     }
 }

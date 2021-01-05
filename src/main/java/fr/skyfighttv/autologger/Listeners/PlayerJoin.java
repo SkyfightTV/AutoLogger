@@ -24,5 +24,8 @@ public class PlayerJoin implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerJoin"), text);
 
         Main.sendDebug("PlayerJoin event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerJoin"))
+            Main.getInstance().webhookClients.get("PlayerJoin").send(text);
     }
 }

@@ -23,5 +23,8 @@ public class PlayerBedEnter implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerBedEnter"), text);
 
         Main.sendDebug("PlayerBedEnter event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerBedEnter"))
+            Main.getInstance().webhookClients.get("PlayerBedEnter").send(text);
     }
 }

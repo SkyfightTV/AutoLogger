@@ -57,5 +57,8 @@ public class PlayerDeath implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerDeath"), text);
 
         Main.sendDebug("PlayerDeath event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerDeath"))
+            Main.getInstance().webhookClients.get("PlayerDeath").send(text);
     }
 }

@@ -24,5 +24,8 @@ public class PlayerPickupItem implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerPickupItem"), text);
 
         Main.sendDebug("PlayerPickupItem event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerPickupItem"))
+            Main.getInstance().webhookClients.get("PlayerPickupItem").send(text);
     }
 }

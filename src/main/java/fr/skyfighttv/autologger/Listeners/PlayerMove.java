@@ -26,5 +26,8 @@ public class PlayerMove implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerMove"), text);
 
         Main.sendDebug("PlayerMove event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerMove"))
+            Main.getInstance().webhookClients.get("PlayerMove").send(text);
     }
 }

@@ -24,5 +24,8 @@ public class PlayerKick implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerKick"), text);
 
         Main.sendDebug("PlayerKick event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerKick"))
+            Main.getInstance().webhookClients.get("PlayerKick").send(text);
     }
 }

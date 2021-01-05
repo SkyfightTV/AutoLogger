@@ -23,5 +23,8 @@ public class PlayerItemBreak implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerItemBreak"), text);
 
         Main.sendDebug("PlayerItemBreak event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerItemBreak"))
+            Main.getInstance().webhookClients.get("PlayerItemBreak").send(text);
     }
 }

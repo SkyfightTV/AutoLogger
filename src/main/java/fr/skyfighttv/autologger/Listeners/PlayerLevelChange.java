@@ -24,5 +24,8 @@ public class PlayerLevelChange implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerLevelChange"), text);
 
         Main.sendDebug("PlayerLevelChange event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerLevelChange"))
+            Main.getInstance().webhookClients.get("PlayerLevelChange").send(text);
     }
 }

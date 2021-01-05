@@ -25,5 +25,8 @@ public class EntityDamage implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("EntityDamage"), text);
 
         Main.sendDebug("EntityDamage event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("EntityDamage"))
+            Main.getInstance().webhookClients.get("EntityDamage").send(text);
     }
 }

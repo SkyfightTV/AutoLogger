@@ -26,5 +26,8 @@ public class PlayerInteract implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerInteract"), text);
 
         Main.sendDebug("PlayerInteract event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerInteract"))
+            Main.getInstance().webhookClients.get("PlayerInteract").send(text);
     }
 }

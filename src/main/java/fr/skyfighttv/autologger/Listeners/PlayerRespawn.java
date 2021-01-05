@@ -22,5 +22,8 @@ public class PlayerRespawn implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerRespawn"), text);
 
         Main.sendDebug("PlayerRespawn event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerRespawn"))
+            Main.getInstance().webhookClients.get("PlayerRespawn").send(text);
     }
 }

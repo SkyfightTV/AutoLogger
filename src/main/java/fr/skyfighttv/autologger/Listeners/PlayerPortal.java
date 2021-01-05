@@ -26,5 +26,8 @@ public class PlayerPortal implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerPortal"), text);
 
         Main.sendDebug("PlayerPortal event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerPortal"))
+            Main.getInstance().webhookClients.get("PlayerPortal").send(text);
     }
 }

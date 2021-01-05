@@ -23,5 +23,8 @@ public class PlayerExpChange implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerExpChange"), text);
 
         Main.sendDebug("PlayerExpChange event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerExpChange"))
+            Main.getInstance().webhookClients.get("PlayerExpChange").send(text);
     }
 }

@@ -20,5 +20,8 @@ public class PlayerChat implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerChat"), text);
 
         Main.sendDebug("PlayerChat event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerChat"))
+            Main.getInstance().webhookClients.get("PlayerChat").send(text);
     }
 }

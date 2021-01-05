@@ -23,5 +23,8 @@ public class PlayerBucketEmpty implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerBucketEmpty"), text);
 
         Main.sendDebug("PlayerBucketEmpty event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerBucketEmpty"))
+            Main.getInstance().webhookClients.get("PlayerBucketEmpty").send(text);
     }
 }

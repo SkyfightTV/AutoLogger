@@ -24,5 +24,8 @@ public class PlayerFish implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerFish"), text);
 
         Main.sendDebug("PlayerFish event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerFish"))
+            Main.getInstance().webhookClients.get("PlayerFish").send(text);
     }
 }

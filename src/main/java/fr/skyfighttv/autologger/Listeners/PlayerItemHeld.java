@@ -24,5 +24,8 @@ public class PlayerItemHeld implements Listener {
         FileManager.writeInFile(FileManager.getFiles().get("PlayerItemHeld"), text);
 
         Main.sendDebug("PlayerItemHeld event was called");
+
+        if (Main.getInstance().webhookClients.containsKey("PlayerItemHeld"))
+            Main.getInstance().webhookClients.get("PlayerItemHeld").send(text);
     }
 }
