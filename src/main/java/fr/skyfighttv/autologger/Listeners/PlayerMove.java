@@ -13,7 +13,7 @@ public class PlayerMove implements Listener {
     @EventHandler
     private void onPlayerMove(PlayerMoveEvent event) {
         String text = FileManager.getValues().get("config").getString("PlayerMove.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis())
+                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%worldname%", event.getPlayer().getWorld().getName())
                 .replaceAll("%fromx%", event.getFrom().getBlockX() + "")
@@ -21,7 +21,7 @@ public class PlayerMove implements Listener {
                 .replaceAll("%fromz%", event.getFrom().getBlockZ()+ "")
                 .replaceAll("%tox%", Objects.requireNonNull(event.getTo()).getBlockX() + "")
                 .replaceAll("%toy%", Objects.requireNonNull(event.getTo()).getBlockY() + "")
-                .replaceAll("%toz%", Objects.requireNonNull(event.getTo()).getBlockZ() + ""));
+                .replaceAll("%toz%", Objects.requireNonNull(event.getTo()).getBlockZ() + "");
 
         FileManager.writeInFile(FileManager.getFiles().get("PlayerMove"), text);
     }

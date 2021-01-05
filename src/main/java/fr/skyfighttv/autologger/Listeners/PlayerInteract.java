@@ -12,7 +12,7 @@ public class PlayerInteract implements Listener {
     @EventHandler
     private void onPlayerInteract(PlayerInteractEvent event) {
         String text = FileManager.getValues().get("config").getString("PlayerInteract.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis())
+                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%worldname%", event.getPlayer().getWorld().getName())
                 .replaceAll("%action%", event.getAction().name())
@@ -20,7 +20,7 @@ public class PlayerInteract implements Listener {
                 .replaceAll("%item%", Objects.requireNonNull(event.getItem()).getType().name())
                 .replaceAll("%x%", event.getPlayer().getLocation().getBlockX() + "")
                 .replaceAll("%y%", event.getPlayer().getLocation().getBlockY() + "")
-                .replaceAll("%z%", event.getPlayer().getLocation().getBlockZ() + ""));
+                .replaceAll("%z%", event.getPlayer().getLocation().getBlockZ() + "");
 
         FileManager.writeInFile(FileManager.getFiles().get("PlayerInteract"), text);
     }
