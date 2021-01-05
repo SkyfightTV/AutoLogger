@@ -6,33 +6,28 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
-import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Objects;
 
 public class PlayerTeleport implements Listener {
     @EventHandler
-    private void onTeleport(PlayerTeleportEvent event) {
+    private void onPlayerTeleport(PlayerTeleportEvent event) {
         if (event.getCause()==PlayerTeleportEvent.TeleportCause.UNKNOWN) return;
         if (!event.getPlayer().isOnline() || Bukkit.getPlayer(event.getPlayer().getName()) == null) return;
 
-        String text = "("
-                + event.getCause().name()
-                + ") "
-                + event.getFrom().getWorld().getName()
-                + " at "
-                + (int) event.getFrom().getX()
-                + " "
-                + (int) event.getFrom().getY()
-                + " "
-                + (int) event.getFrom().getZ()
-                + " -> "
-                + event.getTo().getWorld().getName()
-                + " at "
-                + (int) event.getTo().getX()
-                + " "
-                + (int) event.getTo().getY()
-                + " "
-                + (int) event.getTo().getZ();
+        String text = FileManager.getValues().get("config").getString("PlayerTeleport.Message")
+                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis())
+                        .replaceAll("%playername%", event.getPlayer().getName())
+                        .replaceAll("%worldname%", event.getPlayer().getWorld().getName())
+                        .replaceAll("%cause%", event.getCause().name())
+                        .replaceAll("%fromworldname%", Objects.requireNonNull(event.getFrom().getWorld()).getName())
+                        .replaceAll("%fromx%", event.getFrom().getBlockX() + "")
+                        .replaceAll("%fromy%", event.getFrom().getBlockY() + "")
+                        .replaceAll("%fromz%", event.getFrom().getBlockZ()+ "")
+                        .replaceAll("%tox%", Objects.requireNonNull(event.getTo()).getBlockX() + "")
+                        .replaceAll("%toy%", Objects.requireNonNull(event.getTo()).getBlockY() + "")
+                        .replaceAll("%toz%", Objects.requireNonNull(event.getTo()).getBlockZ() + ""));
 
-        FileManager.writeInFile(FileManager.teleportFile, "default", text, event.getPlayer().getName());
+        FileManager.writeInFile(FileManager.getFiles().get("PlayerTeleport"), text);
     }
 }

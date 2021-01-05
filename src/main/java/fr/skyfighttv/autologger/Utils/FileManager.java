@@ -27,7 +27,7 @@ public class FileManager {
         }
         values.put("config", YamlConfiguration.loadConfiguration(file));
 
-        System.out.println("Config initialized");
+        System.out.println(Main.ANSI_GREEN + "Config initialized" + Main.ANSI_RESET);
 
         for (String events : values.get("config").getConfigurationSection("Modules").getKeys(false)) {
             files.put(events, new File(Main.getInstance().folders.get(events)
@@ -37,13 +37,11 @@ public class FileManager {
                         .replaceAll("%filenumber%", Main.getInstance().fileNumber + "")
                     + ".txt"));
             files.get(events).createNewFile();
-            System.out.println(events + "created and initialized");
+            System.out.println(Main.ANSI_GREEN + events + "created and initialized" + Main.ANSI_RESET);
         }
     }
 
     public static void writeInFile(File file, String text) {
-        //finalStart = new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()) + " " + playerName + " : ";
-
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true));
             bufferedWriter.write(text);
