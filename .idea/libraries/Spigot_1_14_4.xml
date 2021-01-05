@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Spigot-1.14.4">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/Minecraft/Spigot/1.14.4/Spigot-1.14.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/Minecraft/Spigot/1.14.4/Spigot-1.14.4.jar!/" />
+    </SOURCES>
+  </library>
+</component>

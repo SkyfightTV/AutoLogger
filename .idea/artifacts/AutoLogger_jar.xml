@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AutoLogger:jar">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="AutoLogger.jar">
+      <element id="module-output" name="AutoLogger" />
+    </root>
+  </artifact>
+</component>
