@@ -16,15 +16,15 @@ public class Main extends JavaPlugin {
     public Integer fileNumber = 0;
     public HashMap<String, File> folders = new HashMap<>();
 
-    public static String ANSI_RESET;
-    public static String ANSI_BLACK;
-    public static String ANSI_RED;
-    public static String ANSI_GREEN;
-    public static String ANSI_YELLOW;
-    public static String ANSI_BLUE;
-    public static String ANSI_PURPLE;
-    public static String ANSI_CYAN;
-    public static String ANSI_WHITE;
+    public static String ANSI_RESET = "";
+    public static String ANSI_BLACK = "";
+    public static String ANSI_RED = "";
+    public static String ANSI_GREEN = "";
+    public static String ANSI_YELLOW = "";
+    public static String ANSI_BLUE = "";
+    public static String ANSI_PURPLE = "";
+    public static String ANSI_CYAN = "";
+    public static String ANSI_WHITE = "";
 
     private final HashMap<String, ?> listenerList = new HashMap<>() {{
         put("BlockBreak", new BlockBreak());
