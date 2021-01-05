@@ -1,5 +1,6 @@
 package fr.skyfighttv.autologger.Listeners;
 
+import fr.skyfighttv.autologger.Main;
 import fr.skyfighttv.autologger.Utils.FileManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,5 +19,7 @@ public class PlayerQuit implements Listener {
                 .replaceAll("%message%", Objects.requireNonNull(event.getQuitMessage()));
 
         FileManager.writeInFile(FileManager.getFiles().get("PlayerQuit"), text);
+
+        Main.sendDebug("PlayerQuit event was called");
     }
 }

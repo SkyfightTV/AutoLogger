@@ -3,7 +3,7 @@ package fr.skyfighttv.autologger;
 import fr.skyfighttv.autologger.Listeners.*;
 import fr.skyfighttv.autologger.Utils.FileManager;
 import org.bukkit.event.HandlerList;
-import org.bukkit.event.*;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -68,8 +68,6 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         Instance = this;
-
-
 
         if (getConfig().getBoolean("ColorConsole")) {
             ANSI_RESET = "\u001B[0m";
@@ -144,6 +142,10 @@ public class Main extends JavaPlugin {
         System.out.println("-_-_-_-_- AutoLogger Initialized -_-_-_-_-");
     }
 
+    public static void sendDebug(String text) {
+        if (Main.getInstance().getConfig().getBoolean("DebugMode"))
+            System.out.println(ANSI_BLUE + "[AutoLogger] Debug : " + ANSI_PURPLE + text);
+    }
 
     public static Main getInstance() {
         return Instance;

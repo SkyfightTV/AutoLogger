@@ -1,5 +1,6 @@
 package fr.skyfighttv.autologger.Listeners;
 
+import fr.skyfighttv.autologger.Main;
 import fr.skyfighttv.autologger.Utils.FileManager;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
@@ -54,5 +55,7 @@ public class PlayerDeath implements Listener {
                 .replaceAll("%message%", Objects.requireNonNull(event.getDeathMessage()));
 
         FileManager.writeInFile(FileManager.getFiles().get("PlayerDeath"), text);
+
+        Main.sendDebug("PlayerDeath event was called");
     }
 }

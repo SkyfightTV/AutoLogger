@@ -1,5 +1,6 @@
 package fr.skyfighttv.autologger.Listeners;
 
+import fr.skyfighttv.autologger.Main;
 import fr.skyfighttv.autologger.Utils.FileManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,5 +22,7 @@ public class BlockBreak implements Listener {
                 .replaceAll("%itemname%", event.getPlayer().getInventory().getItemInMainHand().getType().name());
 
         FileManager.writeInFile(FileManager.getFiles().get("BlockBreak"), text);
+
+        Main.sendDebug("BlockBreak event was called");
     }
 }

@@ -50,6 +50,8 @@ public class FileManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Main.sendDebug(file.getName() + " was modify");
     }
 
     /*public static void save(Files files) {

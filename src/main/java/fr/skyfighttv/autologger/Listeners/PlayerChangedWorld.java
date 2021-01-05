@@ -1,5 +1,6 @@
 package fr.skyfighttv.autologger.Listeners;
 
+import fr.skyfighttv.autologger.Main;
 import fr.skyfighttv.autologger.Utils.FileManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,5 +18,7 @@ public class PlayerChangedWorld implements Listener {
                 .replaceAll("%from%", event.getFrom().getName());
 
         FileManager.writeInFile(FileManager.getFiles().get("PlayerChangedWorld"), text);
+
+        Main.sendDebug("PlayerChangedWorld event was called");
     }
 }

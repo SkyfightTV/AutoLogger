@@ -1,5 +1,6 @@
 package fr.skyfighttv.autologger.Listeners;
 
+import fr.skyfighttv.autologger.Main;
 import fr.skyfighttv.autologger.Utils.FileManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,5 +18,7 @@ public class PlayerChatTabComplete implements Listener {
                 .replaceAll("%message%", event.getChatMessage());
 
         FileManager.writeInFile(FileManager.getFiles().get("PlayerChatTabComplete"), text);
+
+        Main.sendDebug("PlayerChatTabComplete event was called");
     }
 }

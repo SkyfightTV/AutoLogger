@@ -1,5 +1,6 @@
 package fr.skyfighttv.autologger.Listeners;
 
+import fr.skyfighttv.autologger.Main;
 import fr.skyfighttv.autologger.Utils.FileManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,5 +21,7 @@ public class PlayerBedEnter implements Listener {
                 .replaceAll("%z%", event.getBed().getLocation().getBlockZ() + "");
 
         FileManager.writeInFile(FileManager.getFiles().get("PlayerBedEnter"), text);
+
+        Main.sendDebug("PlayerBedEnter event was called");
     }
 }

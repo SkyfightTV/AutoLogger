@@ -1,5 +1,6 @@
 package fr.skyfighttv.autologger.Listeners;
 
+import fr.skyfighttv.autologger.Main;
 import fr.skyfighttv.autologger.Utils.FileManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,5 +22,7 @@ public class PlayerLevelChange implements Listener {
                 .replaceAll("%z%", event.getPlayer().getLocation().getBlockZ() + "");
 
         FileManager.writeInFile(FileManager.getFiles().get("PlayerLevelChange"), text);
+
+        Main.sendDebug("PlayerLevelChange event was called");
     }
 }

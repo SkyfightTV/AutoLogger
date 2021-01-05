@@ -1,5 +1,5 @@
 #####################################################################################################
-#$$$$$$\  $$\   $$\ $$$$$$$$\  $$$$$$\  $$\       $$$$$$\   $$$$$$\   $$$$$$\  $$$$$$$$\ $$$$$$$\   #
+# $$$$$$\  $$\   $$\ $$$$$$$$\  $$$$$$\  $$\       $$$$$$\   $$$$$$\   $$$$$$\  $$$$$$$$\ $$$$$$$\   #
 #$$  __$$\ $$ |  $$ |\__$$  __|$$  __$$\ $$ |     $$  __$$\ $$  __$$\ $$  __$$\ $$  _____|$$  __$$\ #
 #$$ /  $$ |$$ |  $$ |   $$ |   $$ /  $$ |$$ |     $$ /  $$ |$$ /  \__|$$ /  \__|$$ |      $$ |  $$ |#
 #$$$$$$$$ |$$ |  $$ |   $$ |   $$ |  $$ |$$ |     $$ |  $$ |$$ |$$$$\ $$ |$$$$\ $$$$$\    $$$$$$$  |#
@@ -12,10 +12,18 @@
 #It works only in Spigot/Bukkit 1.16.4
 #This plugin can be reloaded
 
+#DebugMode sends a message to the console each time an event is called
+#/!\ The debugmode can spam the console /!\
+DebugMode: false
+
+#Default path for all event folders
 FolderPath: "logs"
 
+#Enable or disable color message in the console
 ColorConsole: true
 
+#AutoCleanup is a little module can do delete all old files writte by the plugin
+#This module requires less performance and is very useful for biggest server
 AutoCleanup:
   Enable: true
   #Maximum lifetime of the file in days, after this time the file will be deleted
@@ -36,6 +44,7 @@ AutoCleanup:
 
 #After update, reload the plugin or restart the server
 
+#To find out what the events are for, visit https://cutt.ly/yjdR7lD and https://cutt.ly/FjdTqVz
 Modules:
   BlockBreak: true
   BlockPlace: true
@@ -81,6 +90,7 @@ Modules:
 #| |__| |_| | |\  |  _|  | | |_| | |_| |  _ <  / ___ \| |  | | |_| | |\  |#
 #\____\___/|_| \_|_|   |___\____|\___/|_| \_\/_/   \_\_| |___\___/|_| \_| #
 ###########################################################################
+#After update, reload the plugin or restart the server
 
 #Informations:
 #FolderName = name of the folder where all files of this event are created
@@ -137,14 +147,38 @@ EntityExplode:
 
 #Variables:
 #%entity% = name of the entity
+#%projectile% = name of th projection shoot by the entity
 #%x% = x-coordinate of the entity
 #%y% = y-coordinate of the entity
 #%z% = z-coordinate of the entity
-EntityExplode:
-  FolderName: "AutoLogger_EntityExplode"
+EntityShootBow:
+  FolderName: "AutoLogger_EntityShootBow"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : %entity% shoot %projectile% in %worldname% at %x% %y% %z%"
+
+#Variables:
+#%entity% = name of the entity
+#%x% = x-coordinate of the entity
+#%y% = y-coordinate of the entity
+#%z% = z-coordinate of the entity
+EntitySpawn:
+  FolderName: "AutoLogger_EntitySpawn"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : %entity% in %worldname% at %x% %y% %z%"
 
+#Variables:
+#%entity% = name of the entity
+#%reason% = name of the target reason
+#%x% = x-coordinate of the entity
+#%y% = y-coordinate of the entity
+#%z% = z-coordinate of the entity
+#%targetx% = x-coordinate of the target entity
+#%targety% = y-coordinate of the target entity
+#%targetz% = z-coordinate of the target entity
+EntityTarget:
+  FolderName: "AutoLogger_EntityTarget"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : (%reason%) %entity% in %worldname% at %x% %y% %z%"
 
 #Variables:
 #%bedenterresult% = result of the event

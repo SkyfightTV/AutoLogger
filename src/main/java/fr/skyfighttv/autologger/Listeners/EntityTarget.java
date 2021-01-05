@@ -1,9 +1,9 @@
 package fr.skyfighttv.autologger.Listeners;
 
+import fr.skyfighttv.autologger.Main;
 import fr.skyfighttv.autologger.Utils.FileManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-
 import org.bukkit.event.entity.EntityTargetEvent;
 
 import java.text.SimpleDateFormat;
@@ -25,5 +25,7 @@ public class EntityTarget implements Listener {
                 .replaceAll("%targetz%", event.getTarget().getLocation().getBlockZ() + "");
 
         FileManager.writeInFile(FileManager.getFiles().get("EntityTarget"), text);
+
+        Main.sendDebug("EntityTarget event was called");
     }
 }
