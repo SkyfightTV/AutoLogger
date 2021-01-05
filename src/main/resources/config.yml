@@ -12,7 +12,7 @@
 #It works only in Spigot/Bukkit 1.16.4
 #This plugin can be reloaded
 
-FolderPath: "log"
+FolderPath: "logs"
 
 ColorConsole: true
 
@@ -39,6 +39,11 @@ AutoCleanup:
 Modules:
   BlockBreak: true
   BlockPlace: true
+  EntityDamage: true
+  EntityExplode: true
+  EntityShootBow: true
+  EntitySpawn: true
+  EntityTarget: true
   PlayerBedEnter: true
   PlayerBedLeave: true
   PlayerBucketEmpty: true
@@ -109,14 +114,47 @@ BlockPlace:
   Message: "[%date%] %playername% : %blockname% in %worldname% at %x% %y% %z%"
 
 #Variables:
-#%BedEnterResult% = result of the event
+#%entity% = name of the entity
+#%cause% = cause of the damage
+#%damage% = number of damage get by the entity
+#%x% = x-coordinate of the entity
+#%y% = y-coordinate of the entity
+#%z% = z-coordinate of the entity
+EntityDamage:
+  FolderName: "AutoLogger_EntityDamage"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : (%cause%) %entity% get %damage% damage in %worldname% at %x% %y% %z%"
+
+#Variables:
+#%entity% = name of the entity
+#%x% = x-coordinate of the entity
+#%y% = y-coordinate of the entity
+#%z% = z-coordinate of the entity
+EntityExplode:
+  FolderName: "AutoLogger_EntityExplode"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : %entity% in %worldname% at %x% %y% %z%"
+
+#Variables:
+#%entity% = name of the entity
+#%x% = x-coordinate of the entity
+#%y% = y-coordinate of the entity
+#%z% = z-coordinate of the entity
+EntityExplode:
+  FolderName: "AutoLogger_EntityExplode"
+  FileName: "%date%-%filenumber%"
+  Message: "[%date%] %playername% : %entity% in %worldname% at %x% %y% %z%"
+
+
+#Variables:
+#%bedenterresult% = result of the event
 #%x% = x-coordinate of the bed
 #%y% = y-coordinate of the bed
 #%z% = z-coordinate of the bed
 PlayerBedEnter:
   FolderName: "AutoLogger_PlayerBedEnter"
   FileName: "%date%-%filenumber%"
-  Message: "[%date%] %playername% : (%BedEnterResult%) in %worldname% at %x% %y% %z%"
+  Message: "[%date%] %playername% : (%bedenterresult%) in %worldname% at %x% %y% %z%"
 
 #Variables:
 #%x% = x-coordinate of the bed

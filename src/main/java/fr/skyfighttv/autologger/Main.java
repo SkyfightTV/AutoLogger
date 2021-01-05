@@ -3,7 +3,7 @@ package fr.skyfighttv.autologger;
 import fr.skyfighttv.autologger.Listeners.*;
 import fr.skyfighttv.autologger.Utils.FileManager;
 import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
+import org.bukkit.event.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -29,6 +29,11 @@ public class Main extends JavaPlugin {
     private final HashMap<String, ?> listenerList = new HashMap<>() {{
         put("BlockBreak", new BlockBreak());
         put("BlockPlace", new BlockPlace());
+        put("EntityDamage", new EntityDamage());
+        put("EntityExplode", new EntityExplode());
+        put("EntityShootBow", new EntityShootBow());
+        put("EntitySpawn", new EntitySpawn());
+        put("EntityTarget", new EntityTarget());
         put("PlayerBedEnter", new PlayerBedEnter());
         put("PlayerBedLeave", new PlayerBedLeave());
         put("PlayerBucketEmpty", new PlayerBucketEmpty());
@@ -63,6 +68,8 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         Instance = this;
+
+
 
         if (getConfig().getBoolean("ColorConsole")) {
             ANSI_RESET = "\u001B[0m";

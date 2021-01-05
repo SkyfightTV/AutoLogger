@@ -2,6 +2,7 @@ package fr.skyfighttv.autologger.Listeners;
 
 import fr.skyfighttv.autologger.Utils.FileManager;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerTeleportEvent;
