@@ -17,8 +17,8 @@ public class PlayerInteract implements Listener {
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%worldname%", event.getPlayer().getWorld().getName())
                 .replaceAll("%action%", event.getAction().name())
-                .replaceAll("%block%", Objects.requireNonNull(event.getClickedBlock()).getType().name())
-                .replaceAll("%item%", Objects.requireNonNull(event.getItem()).getType().name())
+                .replaceAll("%block%", event.getClickedBlock() == null ? "null" : Objects.requireNonNull(event.getClickedBlock()).getType().name())
+                .replaceAll("%item%", event.getItem() == null ? "null" : Objects.requireNonNull(event.getItem()).getType().name())
                 .replaceAll("%x%", event.getPlayer().getLocation().getBlockX() + "")
                 .replaceAll("%y%", event.getPlayer().getLocation().getBlockY() + "")
                 .replaceAll("%z%", event.getPlayer().getLocation().getBlockZ() + "");

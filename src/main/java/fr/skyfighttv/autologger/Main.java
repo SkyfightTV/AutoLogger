@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class Main extends JavaPlugin {
     private static Main Instance;
-    public Integer fileNumber;
+    public Integer fileNumber = 0;
     public HashMap<String, File> folders = new HashMap<>();
 
     public static String ANSI_RESET;
@@ -69,6 +69,8 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         Instance = this;
 
+        saveDefaultConfig();
+
         if (getConfig().getBoolean("ColorConsole")) {
             ANSI_RESET = "\u001B[0m";
             ANSI_BLACK = "\u001B[30m";
@@ -122,13 +124,15 @@ public class Main extends JavaPlugin {
         }
 
         if (getConfig().getBoolean("AutoCleanup.Enable")) {
-            System.out.println(ANSI_CYAN + "- AutoCleanup" + ANSI_RESET);
+            System.out.println(ANSI_CYAN + "- AutoCleanup :" + ANSI_RESET);
             long lifeTime = getConfig().getInt("AutoCleanup.MaxFileLife") * 604800000L;
+            int number = 0;
 
             for (File folders : folders.values()) {
                 for (File files : folders.listFiles()) {
                     if (files.lastModified() + lifeTime <= System.currentTimeMillis()) {
                         String filename = files.getName();
+                        number++;
                         if (files.delete()) {
                             System.out.println(ANSI_GREEN + filename + "was deleted" + ANSI_RESET);
                         } else {
@@ -137,6 +141,9 @@ public class Main extends JavaPlugin {
                     }
                 }
             }
+
+            if (number == 0)
+                System.out.println(ANSI_GREEN + "Nothing was deleted" + ANSI_RESET);
         }
 
         System.out.println("-_-_-_-_- AutoLogger Initialized -_-_-_-_-");
@@ -144,7 +151,7 @@ public class Main extends JavaPlugin {
 
     public static void sendDebug(String text) {
         if (Main.getInstance().getConfig().getBoolean("DebugMode"))
-            System.out.println(ANSI_BLUE + "[AutoLogger] Debug : " + ANSI_PURPLE + text);
+            System.out.println(ANSI_BLUE + "[AutoLogger] Debug : " + ANSI_PURPLE + text + ANSI_RESET);
     }
 
     public static Main getInstance() {

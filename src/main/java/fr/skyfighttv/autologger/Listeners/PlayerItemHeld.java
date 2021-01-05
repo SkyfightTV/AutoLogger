@@ -7,7 +7,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 
 import java.text.SimpleDateFormat;
-import java.util.Objects;
 
 public class PlayerItemHeld implements Listener {
     @EventHandler
@@ -16,8 +15,8 @@ public class PlayerItemHeld implements Listener {
                 .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%worldname%", event.getPlayer().getWorld().getName())
-                .replaceAll("%previous%", Objects.requireNonNull(event.getPlayer().getInventory().getItem(event.getPreviousSlot())).getType().name())
-                .replaceAll("%new%", Objects.requireNonNull(event.getPlayer().getInventory().getItem(event.getNewSlot())).getType().name())
+                .replaceAll("%previous%", event.getPlayer().getInventory().getItem(event.getPreviousSlot()) == null ? "null" : event.getPlayer().getInventory().getItem(event.getPreviousSlot()).getType().name())
+                .replaceAll("%new%", event.getPlayer().getInventory().getItem(event.getNewSlot()) == null ? "null" : event.getPlayer().getInventory().getItem(event.getNewSlot()).getType().name())
                 .replaceAll("%x%", event.getPlayer().getLocation().getBlockX() + "")
                 .replaceAll("%y%", event.getPlayer().getLocation().getBlockY() + "")
                 .replaceAll("%z%", event.getPlayer().getLocation().getBlockZ() + "");
