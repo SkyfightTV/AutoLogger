@@ -12,7 +12,7 @@ public class PlayerBedEnter implements Listener {
     @EventHandler
     private void onPlayerBedEnter(PlayerBedEnterEvent event) {
         String text = FileManager.getValues().get("config").getString("PlayerBedEnter.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%BedEnterResult%", event.getBedEnterResult().name())
                 .replaceAll("%worldname%", event.getBed().getWorld().getName())

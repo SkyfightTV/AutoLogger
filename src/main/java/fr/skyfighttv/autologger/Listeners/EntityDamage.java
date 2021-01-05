@@ -12,7 +12,7 @@ public class EntityDamage implements Listener {
     @EventHandler
     private void onEntityDamage(EntityDamageEvent event) {
         String text = FileManager.getValues().get("config").getString("EntityDamage.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getEntityType().name())
                 .replaceAll("%entity%", event.getEntityType().name())
                 .replaceAll("%cause%", event.getCause().name())

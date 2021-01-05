@@ -12,7 +12,7 @@ public class EntityShootBow implements Listener {
     @EventHandler
     private void onEntityShootBow(EntityShootBowEvent event) {
         String text = FileManager.getValues().get("config").getString("EntityShootBow.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getEntityType().name())
                 .replaceAll("%entity%", event.getEntityType().name())
                 .replaceAll("%projectile%", event.getProjectile().getName())

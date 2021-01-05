@@ -12,7 +12,7 @@ public class EntitySpawn implements Listener {
     @EventHandler
     private void onEntitySpawn(EntitySpawnEvent event) {
         String text = FileManager.getValues().get("config").getString("EntitySpawn.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getEntityType().name())
                 .replaceAll("%entity%", event.getEntityType().name())
                 .replaceAll("%worldname%", event.getLocation().getWorld().getName())

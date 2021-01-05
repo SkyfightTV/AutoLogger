@@ -12,7 +12,7 @@ public class PlayerBedLeave implements Listener {
     @EventHandler
     private void onPlayerBedLeave(PlayerBedLeaveEvent event) {
         String text = FileManager.getValues().get("config").getString("PlayerBedLeave.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%worldname%", event.getBed().getWorld().getName())
                 .replaceAll("%x%", event.getBed().getLocation().getBlockX() + "")

@@ -12,7 +12,7 @@ public class PlayerBucketEmpty implements Listener {
     @EventHandler
     private void onPlayerBucketEmpty(PlayerBucketEmptyEvent event) {
         String text = FileManager.getValues().get("config").getString("PlayerBucketEmpty.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%bucket%", event.getBucket().name())
                 .replaceAll("%worldname%", event.getBlockClicked().getWorld().getName())

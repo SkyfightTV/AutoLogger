@@ -12,7 +12,7 @@ public class PlayerItemBreak implements Listener {
     @EventHandler
     private void onPlayerItemBreak(PlayerItemBreakEvent event) {
         String text = FileManager.getValues().get("config").getString("PlayerItemBreak.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%worldname%", event.getPlayer().getWorld().getName())
                 .replaceAll("%item%", event.getBrokenItem().getType().name())

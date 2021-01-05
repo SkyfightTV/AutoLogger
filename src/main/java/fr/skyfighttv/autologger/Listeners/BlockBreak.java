@@ -12,7 +12,7 @@ public class BlockBreak implements Listener {
     @EventHandler
     private void onBreak(BlockBreakEvent event) {
         String text = FileManager.getValues().get("config").getString("BlockBreak.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%blockname%", event.getBlock().getType().name())
                 .replaceAll("%worldname%", event.getBlock().getWorld().getName())

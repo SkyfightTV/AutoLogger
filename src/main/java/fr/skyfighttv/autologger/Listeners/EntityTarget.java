@@ -12,7 +12,7 @@ public class EntityTarget implements Listener {
     @EventHandler
     private void onEntityTarget(EntityTargetEvent event) {
         String text = FileManager.getValues().get("config").getString("EntityTarget.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getEntityType().name())
                 .replaceAll("%entity%", event.getEntityType().name())
                 .replaceAll("%reason%", event.getReason().name())

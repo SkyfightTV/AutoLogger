@@ -13,7 +13,7 @@ public class PlayerItemHeld implements Listener {
     @EventHandler
     private void onPlayerItemHeld(PlayerItemHeldEvent event) {
         String text = FileManager.getValues().get("config").getString("PlayerItemHeld.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%worldname%", event.getPlayer().getWorld().getName())
                 .replaceAll("%previous%", Objects.requireNonNull(event.getPlayer().getInventory().getItem(event.getPreviousSlot())).getType().name())

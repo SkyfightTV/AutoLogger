@@ -12,7 +12,7 @@ public class PlayerExpChange implements Listener {
     @EventHandler
     private void onPlayerExpChange(PlayerExpChangeEvent event) {
         String text = FileManager.getValues().get("config").getString("PlayerExpChange.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%worldname%", event.getPlayer().getWorld().getName())
                 .replaceAll("%amount%", event.getAmount() + "")

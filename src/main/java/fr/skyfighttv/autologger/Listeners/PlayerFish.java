@@ -12,7 +12,7 @@ public class PlayerFish implements Listener {
     @EventHandler
     private void onPlayerFish(PlayerFishEvent event) {
         String text = FileManager.getValues().get("config").getString("PlayerFish.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%worldname%", event.getPlayer().getWorld().getName())
                 .replaceAll("%fish%", event.getCaught().getName())

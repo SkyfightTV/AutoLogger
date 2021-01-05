@@ -13,7 +13,7 @@ public class PlayerMove implements Listener {
     @EventHandler
     private void onPlayerMove(PlayerMoveEvent event) {
         String text = FileManager.getValues().get("config").getString("PlayerMove.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%worldname%", event.getPlayer().getWorld().getName())
                 .replaceAll("%fromx%", event.getFrom().getBlockX() + "")

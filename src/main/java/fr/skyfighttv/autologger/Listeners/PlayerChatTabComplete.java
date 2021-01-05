@@ -12,7 +12,7 @@ public class PlayerChatTabComplete implements Listener {
     @EventHandler
     private void onPlayerChatTabComplete(PlayerChatTabCompleteEvent event) {
         String text = FileManager.getValues().get("config").getString("PlayerChatTabComplete.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%worldname%", event.getPlayer().getWorld().getName())
                 .replaceAll("%message%", event.getChatMessage());

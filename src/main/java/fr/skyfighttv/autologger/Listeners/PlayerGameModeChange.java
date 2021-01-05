@@ -12,7 +12,7 @@ public class PlayerGameModeChange implements Listener {
     @EventHandler
     private void onPlayerGameModeChange(PlayerGameModeChangeEvent event) {
         String text = FileManager.getValues().get("config").getString("PlayerGameModeChange.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%worldname%", event.getPlayer().getWorld().getName())
                 .replaceAll("%previous%", event.getPlayer().getGameMode().name())

@@ -12,7 +12,7 @@ public class PlayerItemDamage implements Listener {
     @EventHandler
     private void onPlayerItemDamage(PlayerItemDamageEvent event) {
         String text = FileManager.getValues().get("config").getString("PlayerItemDamage.Message")
-                .replaceAll("%date%", new SimpleDateFormat("'['HH:mm:ss']'").format(System.currentTimeMillis()))
+                .replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getPlayer().getName())
                 .replaceAll("%worldname%", event.getPlayer().getWorld().getName())
                 .replaceAll("%item%", event.getItem().getType().name())
