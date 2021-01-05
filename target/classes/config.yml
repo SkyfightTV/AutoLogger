@@ -473,6 +473,6 @@ PlayerRespawn:
 #%toy% = coordinate y where the player goes
 #%toz% = coordinate z where the player goes
 PlayerTeleport:
-  FolderName: "AutoLogger_onPlayerTeleport"
+  FolderName: "AutoLogger_PlayerTeleport"
   FileName: "%date%-%filenumber%"
   Message: "[%date%] %playername% : (%cause%) %fromworldname% at %fromx% %fromy% %fromz% -> %worldname% at %tox% %toy% %toz%"
