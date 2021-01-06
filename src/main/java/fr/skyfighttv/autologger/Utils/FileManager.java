@@ -30,14 +30,18 @@ public class FileManager {
         System.out.println(Main.ANSI_GREEN + "Config initialized" + Main.ANSI_RESET);
 
         for (String events : values.get("config").getConfigurationSection("Modules").getKeys(false)) {
-            files.put(events, new File(Main.getInstance().folders.get(events)
-                    + "/"
-                    + values.get("config").getString(events + ".FileName")
+            if (values.get("config").getBoolean("Modules." + events)) {
+                files.put(events, new File(Main.getInstance().folders.get(events)
+                        + "/"
+                        + values.get("config").getString(events + ".FileName")
                         .replaceAll("%date%", new SimpleDateFormat("yyyy-MM-dd").format(System.currentTimeMillis()))
                         .replaceAll("%filenumber%", Main.getInstance().fileNumber + "")
-                    + ".txt"));
-            files.get(events).createNewFile();
-            System.out.println(Main.ANSI_GREEN + events + "created and initialized" + Main.ANSI_RESET);
+                        + ".txt"));
+                files.get(events).createNewFile();
+                System.out.println(Main.ANSI_GREEN + events + " created and initialized" + Main.ANSI_RESET);
+            } else {
+                System.out.println(Main.ANSI_RED + events + " was skipped" + Main.ANSI_RESET);
+            }
         }
     }
 

@@ -9,5 +9,8 @@
         <module name="AutoLogger" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AutoLogger" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

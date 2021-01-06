@@ -13,11 +13,6 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class Main extends JavaPlugin {
-    private static Main Instance;
-    public Integer fileNumber = 0;
-    public HashMap<String, File> folders = new HashMap<>();
-    public HashMap<String, WebhookClient> webhookClients = new HashMap<>();
-
     public static String ANSI_RESET = "";
     public static String ANSI_BLACK = "";
     public static String ANSI_RED = "";
@@ -27,8 +22,8 @@ public class Main extends JavaPlugin {
     public static String ANSI_PURPLE = "";
     public static String ANSI_CYAN = "";
     public static String ANSI_WHITE = "";
-
-    private final HashMap<String, Listener> listenerList = new HashMap<>() {{
+    private static Main Instance;
+    private final HashMap<String, Listener> listenerList = new HashMap<String, Listener>() {{
         put("BlockBreak", new BlockBreak());
         put("BlockPlace", new BlockPlace());
         put("EntityDamage", new EntityDamage());
@@ -66,6 +61,18 @@ public class Main extends JavaPlugin {
         put("PlayerRespawn", new PlayerRespawn());
         put("PlayerTeleport", new PlayerTeleport());
     }};
+    public Integer fileNumber = 0;
+    public HashMap<String, File> folders = new HashMap<>();
+    public HashMap<String, WebhookClient> webhookClients = new HashMap<>();
+
+    public static void sendDebug(String text) {
+        if (Main.getInstance().getConfig().getBoolean("DebugMode"))
+            System.out.println(ANSI_BLUE + "[AutoLogger] Debug : " + ANSI_PURPLE + text + ANSI_RESET);
+    }
+
+    public static Main getInstance() {
+        return Instance;
+    }
 
     @Override
     public void onEnable() {
@@ -102,6 +109,7 @@ public class Main extends JavaPlugin {
         }
 
         System.out.println(ANSI_CYAN + "- Initialization of files :" + ANSI_RESET);
+
 
         try {
             new FileManager();
@@ -161,14 +169,5 @@ public class Main extends JavaPlugin {
         }
 
         System.out.println("-_-_-_-_- AutoLogger Initialized -_-_-_-_-");
-    }
-
-    public static void sendDebug(String text) {
-        if (Main.getInstance().getConfig().getBoolean("DebugMode"))
-            System.out.println(ANSI_BLUE + "[AutoLogger] Debug : " + ANSI_PURPLE + text + ANSI_RESET);
-    }
-
-    public static Main getInstance() {
-        return Instance;
     }
 }
