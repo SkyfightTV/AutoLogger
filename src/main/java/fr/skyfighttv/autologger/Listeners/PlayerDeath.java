@@ -45,7 +45,7 @@ public class PlayerDeath implements Listener {
             lootString.deleteCharAt(lootString.lastIndexOf(", "));
         }
 
-        text.replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
+        text = text.replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
                 .replaceAll("%playername%", event.getEntity().getName())
                 .replaceAll("%worldname%", event.getEntity().getWorld().getName())
                 .replaceAll("%stuff%", lootString.toString())
