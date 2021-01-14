@@ -1,6 +1,6 @@
-package fr.skyfighttv.autologger.Utils;
+package fr.skyfighttv.ffarush.Utils;
 
-import fr.skyfighttv.autologger.Main;
+import fr.skyfighttv.ffarush.Main;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.*;
