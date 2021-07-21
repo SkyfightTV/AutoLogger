@@ -1,8 +1,11 @@
 package fr.skyfighttv.autologger;
 
 import club.minnced.discord.webhook.WebhookClient;
-import fr.skyfighttv.autologger.Listeners.*;
-import fr.skyfighttv.autologger.Utils.FileManager;
+import fr.skyfighttv.autologger.commands.AutoLoggerManager;
+import fr.skyfighttv.autologger.listeners.*;
+import fr.skyfighttv.autologger.utils.FileManager;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -23,6 +26,7 @@ public class Main extends JavaPlugin {
     public static String ANSI_CYAN = "";
     public static String ANSI_WHITE = "";
     private static Main Instance;
+    public final HashMap<Player, String> loggers = new HashMap<>();
     private final HashMap<String, Listener> listenerList = new HashMap<String, Listener>() {{
         put("BlockBreak", new BlockBreak());
         put("BlockPlace", new BlockPlace());
@@ -67,7 +71,20 @@ public class Main extends JavaPlugin {
 
     public static void sendDebug(String text) {
         if (Main.getInstance().getConfig().getBoolean("DebugMode"))
-            System.out.println(ANSI_BLUE + "[AutoLogger] Debug : " + ANSI_PURPLE + text + ANSI_RESET);
+            System.out.print(ANSI_BLUE + "[AutoLogger] Debug : " + ANSI_PURPLE + text + ANSI_RESET);
+    }
+
+    public static void sendLogs(String text, Entity player) {
+        for (Player p : Main.getInstance().loggers.keySet()) {
+            if (player instanceof Player) {
+                if (player.getName().equals(Main.getInstance().loggers.get(p))
+                        || Main.getInstance().loggers.get(p).equals("all")) {
+                    p.sendMessage("§a§lAutoLogger §f§l>> §e" + player.getName() + " §f§l: §7" + text);
+                }
+            } else if (Main.getInstance().loggers.get(p).equals("all")) {
+                p.sendMessage("§a§lAutoLogger §f§l>> §e" + player.getName() + " §f§l: §7" + text);
+            }
+        }
     }
 
     public static Main getInstance() {
@@ -92,8 +109,8 @@ public class Main extends JavaPlugin {
             ANSI_WHITE = "\u001B[37m";
         }
 
-        System.out.println(ANSI_YELLOW + "-_-_-_-_- " + ANSI_GREEN + "AutoLogger" + ANSI_YELLOW + " -_-_-_-_-" + ANSI_RESET);
-        System.out.println(ANSI_CYAN + "- Creation of folders :" + ANSI_RESET);
+        System.out.print(ANSI_YELLOW + "-_-_-_-_- " + ANSI_GREEN + "AutoLogger" + ANSI_YELLOW + " -_-_-_-_-" + ANSI_RESET);
+        System.out.print(ANSI_CYAN + "- Creation of folders :" + ANSI_RESET);
 
         for (String events : getConfig().getConfigurationSection("Modules").getKeys(false)) {
             if (getConfig().getBoolean("Modules." + events)) {
@@ -102,13 +119,13 @@ public class Main extends JavaPlugin {
                 if (fileNumber == 0)
                     fileNumber = Objects.requireNonNull(folders.get(events).listFiles()).length + 1;
 
-                System.out.println(ANSI_GREEN + events + " folder created" + ANSI_RESET);
+                System.out.print(ANSI_GREEN + events + " folder created" + ANSI_RESET);
             } else {
-                System.out.println(ANSI_RED + events + " folder skipped" + ANSI_RESET);
+                System.out.print(ANSI_RED + events + " folder skipped" + ANSI_RESET);
             }
         }
 
-        System.out.println(ANSI_CYAN + "- Initialization of files :" + ANSI_RESET);
+        System.out.print(ANSI_CYAN + "- Initialization of files :" + ANSI_RESET);
 
 
         try {
@@ -117,36 +134,36 @@ public class Main extends JavaPlugin {
             e.printStackTrace();
         }
 
-        System.out.println(ANSI_CYAN + "- Initialization of events :" + ANSI_RESET);
+        System.out.print(ANSI_CYAN + "- Initialization of events :" + ANSI_RESET);
 
         for (String events : getConfig().getConfigurationSection("Modules").getKeys(false)) {
             if (getConfig().getBoolean("Modules." + events)) {
                 getServer().getPluginManager().registerEvents(listenerList.get(events), this);
-                System.out.println(ANSI_GREEN + events + " event registered" + ANSI_RESET);
+                System.out.print(ANSI_GREEN + events + " event registered" + ANSI_RESET);
             } else {
                 if (HandlerList.getRegisteredListeners(this).contains(listenerList.get(events))) {
                     HandlerList.unregisterAll(listenerList.get(events));
-                    System.out.println(ANSI_RED + events + " event unregistered" + ANSI_RESET);
+                    System.out.print(ANSI_RED + events + " event unregistered" + ANSI_RESET);
                 } else {
-                    System.out.println(ANSI_RED + events + " event skipped" + ANSI_RESET);
+                    System.out.print(ANSI_RED + events + " event skipped" + ANSI_RESET);
                 }
             }
         }
 
-        System.out.println(ANSI_CYAN + "- Initialization of Discord WebHooks : " + ANSI_RESET);
+        System.out.print(ANSI_CYAN + "- Initialization of Discord WebHooks : " + ANSI_RESET);
 
         for (String events : getConfig().getConfigurationSection("Modules").getKeys(false)) {
             if (getConfig().getString(events + ".WebHookDiscord") != null
                     && !getConfig().getString(events + ".WebHookDiscord").isEmpty()) {
                 webhookClients.put(events, WebhookClient.withUrl(getConfig().getString(events + ".WebHookDiscord")));
-                System.out.println(ANSI_GREEN + events + " webhook was loaded" + ANSI_RESET);
+                System.out.print(ANSI_GREEN + events + " webhook was loaded" + ANSI_RESET);
             } else {
-                System.out.println(ANSI_RED + events + " webhook was skipped" + ANSI_RESET);
+                System.out.print(ANSI_RED + events + " webhook was skipped" + ANSI_RESET);
             }
         }
 
         if (getConfig().getBoolean("AutoCleanup.Enable")) {
-            System.out.println(ANSI_CYAN + "- AutoCleanup :" + ANSI_RESET);
+            System.out.print(ANSI_CYAN + "- AutoCleanup :" + ANSI_RESET);
             long lifeTime = getConfig().getInt("AutoCleanup.MaxFileLife") * 604800000L;
             int number = 0;
 
@@ -156,18 +173,20 @@ public class Main extends JavaPlugin {
                         String filename = files.getName();
                         number++;
                         if (files.delete()) {
-                            System.out.println(ANSI_GREEN + filename + "was deleted" + ANSI_RESET);
+                            System.out.print(ANSI_GREEN + filename + "was deleted" + ANSI_RESET);
                         } else {
-                            System.out.println(ANSI_RED + filename + "could not be deleted" + ANSI_RESET);
+                            System.out.print(ANSI_RED + filename + "could not be deleted" + ANSI_RESET);
                         }
                     }
                 }
             }
 
             if (number == 0)
-                System.out.println(ANSI_GREEN + "Nothing was deleted" + ANSI_RESET);
+                System.out.print(ANSI_GREEN + "Nothing was deleted" + ANSI_RESET);
         }
 
-        System.out.println("-_-_-_-_- AutoLogger Initialized -_-_-_-_-");
+        getCommand("logs").setExecutor(new AutoLoggerManager());
+
+        System.out.print("-_-_-_-_- AutoLogger Initialized -_-_-_-_-");
     }
 }
