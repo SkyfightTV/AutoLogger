@@ -21,8 +21,6 @@ public class PlayerChatTabComplete implements Listener {
 
         Main.sendDebug("PlayerChatTabComplete event was called");
         Main.sendLogs("PlayerChatTabComplete event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerChatTabComplete"))
-            Main.getInstance().webhookClients.get("PlayerChatTabComplete").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

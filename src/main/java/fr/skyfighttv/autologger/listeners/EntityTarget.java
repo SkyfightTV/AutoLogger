@@ -28,8 +28,6 @@ public class EntityTarget implements Listener {
 
         Main.sendDebug("EntityTarget event was called");
         Main.sendLogs("EntityTarget event was called", event.getEntity());
-
-        if (Main.getInstance().webhookClients.containsKey("EntityTarget"))
-            Main.getInstance().webhookClients.get("EntityTarget").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

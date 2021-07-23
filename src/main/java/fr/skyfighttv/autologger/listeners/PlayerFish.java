@@ -25,8 +25,6 @@ public class PlayerFish implements Listener {
 
         Main.sendDebug("PlayerFish event was called");
         Main.sendLogs("PlayerFish event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerFish"))
-            Main.getInstance().webhookClients.get("PlayerFish").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

@@ -23,8 +23,6 @@ public class PlayerBedLeave implements Listener {
 
         Main.sendDebug("PlayerBedLeave event was called");
         Main.sendLogs("PlayerBedLeave event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerBedLeave"))
-            Main.getInstance().webhookClients.get("PlayerBedLeave").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

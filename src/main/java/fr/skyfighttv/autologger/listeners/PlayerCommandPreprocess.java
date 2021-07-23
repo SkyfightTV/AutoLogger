@@ -21,8 +21,6 @@ public class PlayerCommandPreprocess implements Listener {
 
         Main.sendDebug("PlayerCommandPreprocess event was called");
         Main.sendLogs("PlayerCommandPreprocess event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerCommandPreprocess"))
-            Main.getInstance().webhookClients.get("PlayerCommandPreprocess").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

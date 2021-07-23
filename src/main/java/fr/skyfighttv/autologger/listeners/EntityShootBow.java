@@ -25,8 +25,6 @@ public class EntityShootBow implements Listener {
 
         Main.sendDebug("EntityShootBow event was called");
         Main.sendLogs("EntityShootBow event was called", event.getEntity());
-
-        if (Main.getInstance().webhookClients.containsKey("EntityShootBow"))
-            Main.getInstance().webhookClients.get("EntityShootBow").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

@@ -19,14 +19,12 @@ public class BlockBreak implements Listener {
                 .replaceAll("%x%", event.getBlock().getLocation().getBlockX() + "")
                 .replaceAll("%y%", event.getBlock().getLocation().getBlockY() + "")
                 .replaceAll("%z%", event.getBlock().getLocation().getBlockZ() + "")
-                .replaceAll("%itemname%", event.getPlayer().getInventory().getItemInMainHand().getType().name());
+                .replaceAll("%itemname%", event.getPlayer().getInventory().getItemInHand().getType().name());
 
         FileManager.writeInFile(FileManager.getFiles().get("BlockBreak"), text);
 
         Main.sendDebug("BlockBreak event was called");
         Main.sendLogs("BlockBreak event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("BlockBreak"))
-            Main.getInstance().webhookClients.get("BlockBreak").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

@@ -26,8 +26,6 @@ public class PlayerInteractAtEntity implements Listener {
 
         Main.sendDebug("PlayerInteractAtEntity event was called");
         Main.sendLogs("PlayerInteractAtEntity event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerInteractAtEntity"))
-            Main.getInstance().webhookClients.get("PlayerInteractAtEntity").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

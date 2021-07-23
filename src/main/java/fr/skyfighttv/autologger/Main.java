@@ -1,8 +1,8 @@
 package fr.skyfighttv.autologger;
 
-import club.minnced.discord.webhook.WebhookClient;
 import fr.skyfighttv.autologger.commands.AutoLoggerManager;
 import fr.skyfighttv.autologger.listeners.*;
+import fr.skyfighttv.autologger.utils.DiscordWebhook;
 import fr.skyfighttv.autologger.utils.FileManager;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -12,6 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -67,7 +68,7 @@ public class Main extends JavaPlugin {
     }};
     public Integer fileNumber = 0;
     public HashMap<String, File> folders = new HashMap<>();
-    public HashMap<String, WebhookClient> webhookClients = new HashMap<>();
+    private static final HashMap<String, DiscordWebhook> webhookClients = new HashMap<>();
 
     public static void sendDebug(String text) {
         if (Main.getInstance().getConfig().getBoolean("DebugMode"))
@@ -83,6 +84,20 @@ public class Main extends JavaPlugin {
                 }
             } else if (Main.getInstance().loggers.get(p).equals("all")) {
                 p.sendMessage("§a§lAutoLogger §f§l>> §e" + player.getName() + " §f§l: §7" + text);
+            }
+        }
+    }
+
+    public static void sendWebHook(String event, String text) {
+        DiscordWebhook wh = webhookClients.get(event.replaceAll("event", ""));
+        System.out.println(Arrays.toString(webhookClients.keySet().toArray()));
+        System.out.println(wh);
+        if (wh != null) {
+            wh.setContent(text);
+            try {
+                wh.execute();
+            } catch (IOException e) {
+                System.out.println(ANSI_RED + "ERROR WEBHOOK : " + event + " webhook message was cancel" + ANSI_RESET);
             }
         }
     }
@@ -155,8 +170,12 @@ public class Main extends JavaPlugin {
         for (String events : getConfig().getConfigurationSection("Modules").getKeys(false)) {
             if (getConfig().getString(events + ".WebHookDiscord") != null
                     && !getConfig().getString(events + ".WebHookDiscord").isEmpty()) {
-                webhookClients.put(events, WebhookClient.withUrl(getConfig().getString(events + ".WebHookDiscord")));
-                System.out.print(ANSI_GREEN + events + " webhook was loaded" + ANSI_RESET);
+                try {
+                    webhookClients.put(events.toLowerCase(), new DiscordWebhook(getConfig().getString(events + ".WebHookDiscord")));
+                    System.out.print(ANSI_GREEN + events + " webhook was loaded" + ANSI_RESET);
+                } catch (Exception e) {
+                    System.out.println(ANSI_RED + "ERROR WEBHOOK : " + events + " can't find webhook" + ANSI_RESET);
+                }
             } else {
                 System.out.print(ANSI_RED + events + " webhook was skipped" + ANSI_RESET);
             }

@@ -24,8 +24,6 @@ public class EntitySpawn implements Listener {
 
         Main.sendDebug("EntitySpawn event was called");
         Main.sendLogs("EntitySpawn event was called", event.getEntity());
-
-        if (Main.getInstance().webhookClients.containsKey("EntitySpawn"))
-            Main.getInstance().webhookClients.get("EntitySpawn").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

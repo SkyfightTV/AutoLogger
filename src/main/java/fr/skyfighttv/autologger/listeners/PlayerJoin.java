@@ -25,8 +25,6 @@ public class PlayerJoin implements Listener {
 
         Main.sendDebug("PlayerJoin event was called");
         Main.sendLogs("PlayerJoin event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerJoin"))
-            Main.getInstance().webhookClients.get("PlayerJoin").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

@@ -25,8 +25,6 @@ public class PlayerItemDamage implements Listener {
 
         Main.sendDebug("PlayerItemDamage event was called");
         Main.sendLogs("PlayerItemDamage event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerItemDamage"))
-            Main.getInstance().webhookClients.get("PlayerItemDamage").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

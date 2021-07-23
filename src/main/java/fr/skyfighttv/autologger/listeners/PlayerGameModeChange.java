@@ -25,8 +25,6 @@ public class PlayerGameModeChange implements Listener {
 
         Main.sendDebug("PlayerGameModeChange event was called");
         Main.sendLogs("PlayerGameModeChange event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerGameModeChange"))
-            Main.getInstance().webhookClients.get("PlayerGameModeChange").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

@@ -24,8 +24,6 @@ public class PlayerBucketFill implements Listener {
 
         Main.sendDebug("PlayerBucketFill event was called");
         Main.sendLogs("PlayerBucketFill event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerBucketFill"))
-            Main.getInstance().webhookClients.get("PlayerBucketFill").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

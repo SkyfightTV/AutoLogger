@@ -23,8 +23,6 @@ public class PlayerRespawn implements Listener {
 
         Main.sendDebug("PlayerRespawn event was called");
         Main.sendLogs("PlayerRespawn event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerRespawn"))
-            Main.getInstance().webhookClients.get("PlayerRespawn").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

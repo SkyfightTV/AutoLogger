@@ -42,7 +42,8 @@ public class PlayerDeath implements Listener {
                 }
                 lootString.append(", ");
             }
-            lootString.deleteCharAt(lootString.lastIndexOf(", "));
+            if (lootString.length() != 0)
+                lootString.deleteCharAt(lootString.lastIndexOf(", "));
         }
 
         text = text.replaceAll("%date%", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()))
@@ -58,8 +59,6 @@ public class PlayerDeath implements Listener {
 
         Main.sendDebug("PlayerDeath event was called");
         Main.sendLogs("PlayerDeath event was called", event.getEntity());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerDeath"))
-            Main.getInstance().webhookClients.get("PlayerDeath").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

@@ -22,8 +22,6 @@ public class PlayerQuit implements Listener {
 
         Main.sendDebug("PlayerQuit event was called");
         Main.sendLogs("PlayerQuit event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerQuit"))
-            Main.getInstance().webhookClients.get("PlayerQuit").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

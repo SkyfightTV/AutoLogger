@@ -24,8 +24,6 @@ public class PlayerBucketEmpty implements Listener {
 
         Main.sendDebug("PlayerBucketEmpty event was called");
         Main.sendLogs("PlayerBucketEmpty event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerBucketEmpty"))
-            Main.getInstance().webhookClients.get("PlayerBucketEmpty").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

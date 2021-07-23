@@ -21,8 +21,6 @@ public class PlayerChat implements Listener {
 
         Main.sendDebug("PlayerChat event was called");
         Main.sendLogs("PlayerChat event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerChat"))
-            Main.getInstance().webhookClients.get("PlayerChat").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

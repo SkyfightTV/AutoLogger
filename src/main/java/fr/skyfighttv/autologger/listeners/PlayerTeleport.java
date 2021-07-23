@@ -33,8 +33,6 @@ public class PlayerTeleport implements Listener {
 
         Main.sendDebug("PlayerTeleport event was called");
         Main.sendLogs("PlayerTeleport event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerTeleport"))
-            Main.getInstance().webhookClients.get("PlayerTeleport").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

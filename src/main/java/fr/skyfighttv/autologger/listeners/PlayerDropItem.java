@@ -24,8 +24,6 @@ public class PlayerDropItem implements Listener {
 
         Main.sendDebug("PlayerDropItem event was called");
         Main.sendLogs("PlayerDropItem event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerDropItem"))
-            Main.getInstance().webhookClients.get("PlayerDropItem").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

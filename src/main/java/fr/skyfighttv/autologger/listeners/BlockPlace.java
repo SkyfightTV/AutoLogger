@@ -24,8 +24,6 @@ public class BlockPlace implements Listener {
 
         Main.sendDebug("BlockPlace event was called");
         Main.sendLogs("BlockPlace event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("BlockPlace"))
-            Main.getInstance().webhookClients.get("BlockPlace").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

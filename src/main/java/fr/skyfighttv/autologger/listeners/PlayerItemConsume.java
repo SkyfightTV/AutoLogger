@@ -24,8 +24,6 @@ public class PlayerItemConsume implements Listener {
 
         Main.sendDebug("PlayerItemConsume event was called");
         Main.sendLogs("PlayerItemConsume event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerItemConsume"))
-            Main.getInstance().webhookClients.get("PlayerItemConsume").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

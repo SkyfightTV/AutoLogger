@@ -27,8 +27,6 @@ public class PlayerPortal implements Listener {
 
         Main.sendDebug("PlayerPortal event was called");
         Main.sendLogs("PlayerPortal event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerPortal"))
-            Main.getInstance().webhookClients.get("PlayerPortal").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

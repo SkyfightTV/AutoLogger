@@ -27,8 +27,6 @@ public class PlayerMove implements Listener {
 
         Main.sendDebug("PlayerMove event was called");
         Main.sendLogs("PlayerMove event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerMove"))
-            Main.getInstance().webhookClients.get("PlayerMove").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

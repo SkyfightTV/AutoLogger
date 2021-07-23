@@ -24,8 +24,6 @@ public class PlayerBedEnter implements Listener {
 
         Main.sendDebug("PlayerBedEnter event was called");
         Main.sendLogs("PlayerBedEnter event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerBedEnter"))
-            Main.getInstance().webhookClients.get("PlayerBedEnter").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

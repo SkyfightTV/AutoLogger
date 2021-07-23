@@ -23,8 +23,6 @@ public class PlayerPickupArrow implements Listener {
 
         Main.sendDebug("PlayerPickupArrow event was called");
         Main.sendLogs("PlayerPickupArrow event was called", event.getPlayer());
-
-        if (Main.getInstance().webhookClients.containsKey("PlayerPickupArrow"))
-            Main.getInstance().webhookClients.get("PlayerPickupArrow").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }

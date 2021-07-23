@@ -24,8 +24,6 @@ public class EntityExplode implements Listener {
 
         Main.sendDebug("EntityExplode event was called");
         Main.sendLogs("EntityExplode event was called", event.getEntity());
-
-        if (Main.getInstance().webhookClients.containsKey("EntityExplode"))
-            Main.getInstance().webhookClients.get("EntityExplode").send(text);
+        Main.sendWebHook(event.getEventName().toLowerCase(), text);
     }
 }
