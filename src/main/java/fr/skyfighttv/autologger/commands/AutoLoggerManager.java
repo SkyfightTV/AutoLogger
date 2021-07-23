@@ -12,9 +12,9 @@ public class AutoLoggerManager implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)) return true;
 
-        Player p = (Player)sender;
+        Player p = (Player) sender;
 
-        if(Main.getInstance().loggers.containsKey(p)) {
+        if (Main.getInstance().loggers.containsKey(p)) {
             Main.getInstance().loggers.remove(p);
             p.sendMessage("§a§lAutoLogger §f§l>> §7Notifications désactivées !");
         } else {
